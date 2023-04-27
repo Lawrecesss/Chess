@@ -406,5 +406,6 @@ public class Chessman : MonoBehaviour
 
     //    }
     //}
+    ////
 
 }
