@@ -29,6 +29,13 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        if (controller.GetComponent<Game>().nextTurn == true)
+        {
+            controller.GetComponent<Chessman>().checkKing();
+            controller.GetComponent<Game>().nextTurn = false;
+
+        }
+        controller.GetComponent<Game>().checkText();
 
         //Destroy the victim Chesspiece
         if (attack)
@@ -55,9 +62,11 @@ public class MovePlate : MonoBehaviour
 
         //Switch Current Player
         controller.GetComponent<Game>().NextTurn();
+        
 
         //Destroy the move plates including self
         reference.GetComponent<Chessman>().DestroyMovePlates();
+        
     }
 
     public void SetCoords(int x, int y)

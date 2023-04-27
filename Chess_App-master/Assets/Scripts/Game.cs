@@ -14,6 +14,8 @@ public class Game : MonoBehaviour
 
     private string currentPlayer = "white";
 
+    public bool nextTurn = true;
+
     private bool gameOver = false;
 
     public void Start()
@@ -86,17 +88,17 @@ public class Game : MonoBehaviour
 
     public void NextTurn()
     {
-        //Chessman cm = new Chessman();
-
         if (currentPlayer == "white")
         {
             currentPlayer = "black";
-            //cm.checkKing(4, 7);
+            nextTurn = true;
+            
         }
         else
         {
             currentPlayer = "white";
-            //cm.checkKing(4, 0);
+            nextTurn = true;
+            
         }
     }
 
@@ -120,5 +122,24 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = playerWinner + " is the winner";
 
         GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
+    }
+    public void checkText()
+    {
+        if (chesspiece.GetComponent<Chessman>().check)
+        {
+            switch (currentPlayer)
+            {
+                case "black":
+                    GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().enabled = true;
+                    GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = "Black king is checked by enemy";
+                    break;
+
+                case "white":
+                    GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
+                    GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().text = "White king is checked by enemy";
+                    break;
+            }
+        }
+
     }
 }
