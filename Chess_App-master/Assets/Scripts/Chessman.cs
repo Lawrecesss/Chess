@@ -310,8 +310,101 @@ public class Chessman : MonoBehaviour
         mpScript.SetReference(gameObject);
         mpScript.SetCoords(matrixX, matrixY);
     }
-    public void  CheckKing()
-    {
+    //public void  checkKing(int x, int y)
+    //{
+    //    checkSurround(x, y);
+    //    checkLMove(x, y);
+    //    CheckLineOrDiagonal(x, y);
+    //    ChangeColorWhenCheck(x, y);
+    //}
+    //public void checkPointPlate(int x, int y)
+    //{
+    //    Game sc = controller.GetComponent<Game>();
+    //    if (sc.PositionOnBoard(x, y))
+    //    {
+    //        GameObject cp = sc.GetPosition(x, y);
 
-    }
+    //        if (cp != null && cp.GetComponent<Chessman>().player != player)
+    //        {
+    //            check = true;
+    //        }
+    //    }
+    //}
+    //public void checkSurround(int x, int y)
+    //{
+    //    checkPointPlate(x, y + 1);
+    //    checkPointPlate(x, y - 1);
+    //    checkPointPlate(x - 1, y + 0);
+    //    checkPointPlate(x - 1, y - 1);
+    //    checkPointPlate(x - 1, y + 1);
+    //    checkPointPlate(x + 1, y + 0);
+    //    checkPointPlate(x + 1, y - 1);
+    //    checkPointPlate(x + 1, y + 1);
+    //}
+    //public void checkLMove(int x, int y)
+    //{
+    //    checkPointPlate(x + 1, y + 2);
+    //    checkPointPlate(x - 1, y + 2);
+    //    checkPointPlate(x + 2, y + 1);
+    //    checkPointPlate(x + 2, y - 1);
+    //    checkPointPlate(x + 1, y - 2);
+    //    checkPointPlate(x - 1, y - 2);
+    //    checkPointPlate(x - 2, y + 1);
+    //    checkPointPlate(x - 2, y - 1);
+    //}
+    //public void LineMove(int xIncrement, int yIncrement)
+    //{
+    //    Game sc = controller.GetComponent<Game>();
+
+    //    int x = xBoard + xIncrement;
+    //    int y = yBoard + yIncrement;
+
+    //    while (sc.PositionOnBoard(x, y))
+    //    {
+    //        if (sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+    //        {
+    //            switch (this.player)
+    //            {
+    //                case "white":
+    //                    if(sc.GetPosition(x, y).GetComponent<Chessman>().name == "black_bishop" ||
+    //                        sc.GetPosition(x, y).GetComponent<Chessman>().name == "black_queen")
+    //                    {
+    //                        check = true;
+    //                    }
+    //                    break;
+    //                case "black":
+    //                    if (sc.GetPosition(x, y).GetComponent<Chessman>().name == "white_bishop" ||
+    //                        sc.GetPosition(x, y).GetComponent<Chessman>().name == "white_queen")
+    //                    {
+    //                        check = true;
+    //                    }
+    //                    break;
+    //            }
+
+    //        }
+    //        x += xIncrement;
+    //        y += yIncrement;
+    //    }
+    //}
+    //public void CheckLineOrDiagonal(int x, int y)
+    //{
+    //    LineMove(1, 0);
+    //    LineMove(0, 1);
+    //    LineMove(1, 1);
+    //    LineMove(-1, 0);
+    //    LineMove(0, -1);
+    //    LineMove(-1, -1);
+    //    LineMove(-1, 1);
+    //    LineMove(1, -1);
+    //}
+    //public void ChangeColorWhenCheck(int x, int y)
+    //{
+    //    Game sc = controller.GetComponent<Game>();
+    //    if (check == true)
+    //    {
+    //        sc.GetPosition(x, y).GetComponent<SpriteRenderer>().color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+
+    //    }
+    //}
+
 }

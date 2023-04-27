@@ -86,13 +86,17 @@ public class Game : MonoBehaviour
 
     public void NextTurn()
     {
+        //Chessman cm = new Chessman();
+
         if (currentPlayer == "white")
         {
             currentPlayer = "black";
+            //cm.checkKing(4, 7);
         }
         else
         {
             currentPlayer = "white";
+            //cm.checkKing(4, 0);
         }
     }
 
