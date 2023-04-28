@@ -9,6 +9,7 @@ public class MovePlate : MonoBehaviour
 
     //The Chesspiece that was tapped to create this MovePlate
     GameObject reference = null;
+    GameObject KReference = null;
 
     //Location on the board
     int matrixX;
@@ -29,28 +30,27 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        Game sc = controller.GetComponent<Game>();
-        GameObject king;
-        switch (sc.GetCurrentPlayer())
-        {
-            case "white":
-                king = sc.GetPosition(sc.GetComponent<Chessman>().whiteKx, sc.GetComponent<Chessman>().whiteKy);
-                break;
-            case "black":
-                king = sc.GetPosition(sc.GetComponent<Chessman>().whiteKx, sc.GetComponent<Chessman>().whiteKy);
-                break;
-        }
+        //controller.GetComponent<Game>();
+        //switch (controller.GetComponent<Game>().GetCurrentPlayer())
+        //{
+        //    case "white":
+        //        KReference = controller.GetComponent<Game>().GetPosition(controller.GetComponent<Game>().GetComponent<Chessman>().whiteKx, controller.GetComponent<Game>().GetComponent<Chessman>().whiteKy);
+        //        break;
+        //    case "black":
+        //        KReference = controller.GetComponent<Game>().GetPosition(controller.GetComponent<Game>().GetComponent<Chessman>().whiteKx, controller.GetComponent<Game>().GetComponent<Chessman>().whiteKy);
+        //        break;
+        //}
         
-        if (controller.GetComponent<Game>().nextTurn == true)
-        {
-            controller.GetComponent<Chessman>().checkKing();
-            controller.GetComponent<Game>().checkText();
-            if (reference.GetComponent<Chessman>().check == true)
-            {
-                controller.GetComponent<Game>().Winner("black");
-            }
-            controller.GetComponent<Game>().nextTurn = false;
-        }
+        //if (controller.GetComponent<Game>().nextTurn == true)
+        //{
+        //    KReference.GetComponent<Chessman>().checkKing();
+        //    controller.GetComponent<Game>().checkText();
+        //    if (KReference.GetComponent<Chessman>().check == true)
+        //    {
+        //        controller.GetComponent<Game>().Winner("black");
+        //    }
+        //    controller.GetComponent<Game>().nextTurn = false;
+        //}
 
         //Destroy the victim Chesspiece
         if (attack)
