@@ -125,7 +125,7 @@ public class Game : MonoBehaviour
     }
     public void checkText()
     {
-        if (chesspiece.GetComponent<Chessman>().check)
+        if (chesspiece.GetComponent<Chessman>().check == true)
         {
             switch (currentPlayer)
             {

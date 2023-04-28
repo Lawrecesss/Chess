@@ -18,11 +18,11 @@ public class Chessman : MonoBehaviour
     //Variable for keeping track of the player it belongs to "black" or "white"
     private string player;
 
-    private int blackKx;
-    private int blackKy;
+    public int blackKx = 4;
+    public int blackKy = 0;
 
-    private int whiteKx;
-    private int whiteKy;
+    public int whiteKx = 4;
+    public int whiteKy = 7;
 
     //References to all the possible Sprites that this Chesspiece could be
     public Sprite black_queen, black_knight, black_bishop, black_king, black_rook, black_pawn;
@@ -351,8 +351,12 @@ public class Chessman : MonoBehaviour
             {
                 check = true;
             }
+            else
+            {
+                check = false;
+            }
         }
-        check = false;
+        
     }
     public void checkSurround(int x, int y)
     {
@@ -379,13 +383,26 @@ public class Chessman : MonoBehaviour
     public void LineMove(int xIncrement, int yIncrement)
     {
         Game sc = controller.GetComponent<Game>();
-
-        int x = xBoard + xIncrement;
-        int y = yBoard + yIncrement;
-
-        while (sc.PositionOnBoard(x, y))
+        int xP = 0;
+        int yP = 0;
+        switch (sc.GetCurrentPlayer())
         {
-            if (sc.GetPosition(x, y) != null && sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+            case "white":
+                xP = whiteKx;
+                yP = whiteKy;
+                break;
+            case "black":
+                xP = blackKx;
+                yP = blackKy;
+                break;   
+        }
+
+        int x = xP + xIncrement;
+        int y = yP + yIncrement;
+
+        while (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y) != null)
+        {
+            if (sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
             {
                 switch (this.player)
                 {
@@ -404,12 +421,14 @@ public class Chessman : MonoBehaviour
                         }
                         break;
                 }
-
+            }
+            else
+            {
+                check = false;
             }
             x += xIncrement;
             y += yIncrement;
         }
-        //check = false;
     }
     public void CheckLineOrDiagonal(int x, int y)
     {

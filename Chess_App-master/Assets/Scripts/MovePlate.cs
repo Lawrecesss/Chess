@@ -29,13 +29,28 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
+        Game sc = controller.GetComponent<Game>();
+        GameObject king;
+        switch (sc.GetCurrentPlayer())
+        {
+            case "white":
+                king = sc.GetPosition(sc.GetComponent<Chessman>().whiteKx, sc.GetComponent<Chessman>().whiteKy);
+                break;
+            case "black":
+                king = sc.GetPosition(sc.GetComponent<Chessman>().whiteKx, sc.GetComponent<Chessman>().whiteKy);
+                break;
+        }
+        
         if (controller.GetComponent<Game>().nextTurn == true)
         {
             controller.GetComponent<Chessman>().checkKing();
+            controller.GetComponent<Game>().checkText();
+            if (reference.GetComponent<Chessman>().check == true)
+            {
+                controller.GetComponent<Game>().Winner("black");
+            }
             controller.GetComponent<Game>().nextTurn = false;
-
         }
-        controller.GetComponent<Game>().checkText();
 
         //Destroy the victim Chesspiece
         if (attack)

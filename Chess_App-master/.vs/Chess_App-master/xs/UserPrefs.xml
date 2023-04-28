@@ -1,23 +1,25 @@
 ﻿<Properties StartupConfiguration="{B23CAA2B-8319-3552-16CB-DDF48790D08A}|">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="fb53e6ee-0f8c-47b7-845e-b473103488bf" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Chessman.cs">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="11ae1e74-310b-4467-ba4c-4938a77d6157" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MovePlate.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Chessman.cs" Line="409" Column="9" />
-      <File FileName="Assets/Scripts/MovePlate.cs" />
+      <File FileName="Assets/Scripts/Game.cs" Line="100" Column="29" />
+      <File FileName="Assets/Scripts/Chessman.cs" Line="412" Column="25" />
+      <File FileName="Assets/Scripts/MovePlate.cs" Line="34" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Chess_App-master" expanded="True">
             <Node name="Assets" expanded="True">
-              <Node name="Scripts" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="MovePlate.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
