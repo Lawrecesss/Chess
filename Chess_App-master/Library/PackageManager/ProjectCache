@@ -5,7 +5,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638181757920000000
+      ticks: 638183369430000000
     m_Hash: 1297998831
   m_LockFileStatus:
     m_FilePath: /Users/lawrance/Desktop/Git/Chess/Chess_App-master/Packages/packages-lock.json
@@ -13,7 +13,7 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638181757920000000
+      ticks: 638183369430000000
     m_Hash: 1607578018
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
@@ -996,6 +996,7 @@ m_ResolvedPackages:
     - 1.6.2
     - 1.6.3
     - 1.6.4
+    - 1.6.5
     - 1.7.0-pre.1
     - 1.7.0-pre.2
     - 1.7.0

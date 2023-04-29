@@ -27,7 +27,7 @@ public class Game : MonoBehaviour
             Create("white_pawn", 3, 1), Create("white_pawn", 4, 1), Create("white_pawn", 5, 1),
             Create("white_pawn", 6, 1), Create("white_pawn", 7, 1) };
         playerBlack = new GameObject[] { Create("black_rook", 0, 7), Create("black_knight",1,7),
-            Create("black_bishop",2,7), Create("black_queen",3,7), Create("black_king",4,7),
+            Create("black_bishop",2,7), Create("black_queen", 4,7), Create("black_king",3,7),
             Create("black_bishop",5,7), Create("black_knight",6,7), Create("black_rook",7,7),
             Create("black_pawn", 0, 6), Create("black_pawn", 1, 6), Create("black_pawn", 2, 6),
             Create("black_pawn", 3, 6), Create("black_pawn", 4, 6), Create("black_pawn", 5, 6),
@@ -122,24 +122,5 @@ public class Game : MonoBehaviour
         GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = playerWinner + " is the winner";
 
         GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
-    }
-    public void checkText()
-    {
-        if (chesspiece.GetComponent<Chessman>().check == true)
-        {
-            switch (currentPlayer)
-            {
-                case "black":
-                    GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().enabled = true;
-                    GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = "Black king is checked by enemy";
-                    break;
-
-                case "white":
-                    GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
-                    GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().text = "White king is checked by enemy";
-                    break;
-            }
-        }
-
     }
 }

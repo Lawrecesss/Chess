@@ -18,11 +18,11 @@ public class Chessman : MonoBehaviour
     //Variable for keeping track of the player it belongs to "black" or "white"
     private string player;
 
-    public int blackKx = 4;
-    public int blackKy = 0;
+    public int blackKx = 3;
+    public int blackKy = 7;
 
     public int whiteKx = 4;
-    public int whiteKy = 7;
+    public int whiteKy = 0;
 
     //References to all the possible Sprites that this Chesspiece could be
     public Sprite black_queen, black_knight, black_bishop, black_king, black_rook, black_pawn;
@@ -328,92 +328,76 @@ public class Chessman : MonoBehaviour
         switch (controller.GetComponent<Game>().GetCurrentPlayer())
         {
             case "white":
-                checkSurround(whiteKx, whiteKy);
-                checkLMove(whiteKx, whiteKy);
-                CheckLineOrDiagonal(whiteKx, whiteKy);
+                checkSurround(blackKx, blackKy, blackKx, blackKy);
+                checkLMove(blackKx, blackKy, blackKx, blackKy);
+                CheckLineOrDiagonal(blackKx, blackKy);
                 break;
             case "black":
-                checkSurround(blackKx, blackKy);
-                checkLMove(blackKx, blackKy);
-                CheckLineOrDiagonal(blackKx, blackKy);
+                checkSurround(whiteKx, whiteKy, whiteKx, whiteKy);
+                checkLMove(whiteKx, whiteKy, whiteKx, whiteKy);
+                CheckLineOrDiagonal(whiteKx, whiteKy);
                 break;
         }
         
     }
-    public void checkPointPlate(int x, int y)
+    public void checkPointPlate(int x, int y, int kPx, int kPy)
     {
         Game sc = controller.GetComponent<Game>();
         if (sc.PositionOnBoard(x, y))
         {
             GameObject cp = sc.GetPosition(x, y);
 
-            if (cp != null && cp.GetComponent<Chessman>().player != player)
+            if (cp != null && cp.GetComponent<Chessman>().player != sc.GetPosition(kPx, kPy).GetComponent<Chessman>().player)
             {
                 check = true;
             }
-            else
-            {
-                check = false;
-            }
+            
         }
         
     }
-    public void checkSurround(int x, int y)
+    public void checkSurround(int x, int y, int kPx, int kPy)
     {
-        checkPointPlate(x, y + 1);
-        checkPointPlate(x, y - 1);
-        checkPointPlate(x - 1, y + 0);
-        checkPointPlate(x - 1, y - 1);
-        checkPointPlate(x - 1, y + 1);
-        checkPointPlate(x + 1, y + 0);
-        checkPointPlate(x + 1, y - 1);
-        checkPointPlate(x + 1, y + 1);
+        checkPointPlate(x, y + 1, kPx, kPy);
+        checkPointPlate(x, y - 1, kPx, kPy);
+        checkPointPlate(x - 1, y + 0, kPx, kPy);
+        checkPointPlate(x - 1, y - 1, kPx, kPy);
+        checkPointPlate(x - 1, y + 1, kPx, kPy);
+        checkPointPlate(x + 1, y + 0, kPx, kPy);
+        checkPointPlate(x + 1, y - 1, kPx, kPy);
+        checkPointPlate(x + 1, y + 1, kPx, kPy);
     }
-    public void checkLMove(int x, int y)
+    public void checkLMove(int x, int y, int kPx, int kPy)
     {
-        checkPointPlate(x + 1, y + 2);
-        checkPointPlate(x - 1, y + 2);
-        checkPointPlate(x + 2, y + 1);
-        checkPointPlate(x + 2, y - 1);
-        checkPointPlate(x + 1, y - 2);
-        checkPointPlate(x - 1, y - 2);
-        checkPointPlate(x - 2, y + 1);
-        checkPointPlate(x - 2, y - 1);
+        checkPointPlate(x + 1, y + 2, kPx, kPy);
+        checkPointPlate(x - 1, y + 2, kPx, kPy);
+        checkPointPlate(x + 2, y + 1, kPx, kPy);
+        checkPointPlate(x + 2, y - 1, kPx, kPy);
+        checkPointPlate(x + 1, y - 2, kPx, kPy);
+        checkPointPlate(x - 1, y - 2, kPx, kPy);
+        checkPointPlate(x - 2, y + 1, kPx, kPy);
+        checkPointPlate(x - 2, y - 1, kPx, kPy);
     }
-    public void LineMove(int xIncrement, int yIncrement)
+    public void LineMove(int xIncrement, int yIncrement, int kPx, int kPy)
     {
         Game sc = controller.GetComponent<Game>();
-        int xP = 0;
-        int yP = 0;
-        switch (sc.GetCurrentPlayer())
-        {
-            case "white":
-                xP = whiteKx;
-                yP = whiteKy;
-                break;
-            case "black":
-                xP = blackKx;
-                yP = blackKy;
-                break;   
-        }
 
-        int x = xP + xIncrement;
-        int y = yP + yIncrement;
+        int x = kPx + xIncrement;
+        int y = kPy + yIncrement;
 
-        while (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y) != null)
+        while (sc.PositionOnBoard(x, y))
         {
-            if (sc.GetPosition(x, y).GetComponent<Chessman>().player != player)
+            if (sc.GetPosition(x, y) != null && sc.GetPosition(x, y).GetComponent<Chessman>().player != sc.GetPosition(kPx, kPy).GetComponent<Chessman>().player)
             {
-                switch (this.player)
+                switch (sc.GetPosition(x, y).GetComponent<Chessman>().player)
                 {
-                    case "white":
+                    case "black":
                         if (sc.GetPosition(x, y).GetComponent<Chessman>().name == "black_bishop" ||
                             sc.GetPosition(x, y).GetComponent<Chessman>().name == "black_queen")
                         {
                             check = true;
                         }
                         break;
-                    case "black":
+                    case "white":
                         if (sc.GetPosition(x, y).GetComponent<Chessman>().name == "white_bishop" ||
                             sc.GetPosition(x, y).GetComponent<Chessman>().name == "white_queen")
                         {
@@ -422,24 +406,21 @@ public class Chessman : MonoBehaviour
                         break;
                 }
             }
-            else
-            {
-                check = false;
-            }
             x += xIncrement;
             y += yIncrement;
+
         }
     }
     public void CheckLineOrDiagonal(int x, int y)
     {
-        LineMove(1, 0);
-        LineMove(0, 1);
-        LineMove(1, 1);
-        LineMove(-1, 0);
-        LineMove(0, -1);
-        LineMove(-1, -1);
-        LineMove(-1, 1);
-        LineMove(1, -1);
+        LineMove(1, 0, x, y);
+        LineMove(0, 1, x, y);
+        LineMove(1, 1, x, y);
+        LineMove(-1, 0, x, y);
+        LineMove(0, -1, x, y);
+        LineMove(-1, -1, x, y);
+        LineMove(-1, 1, x, y);
+        LineMove(1, -1, x, y);
     }
 
 }

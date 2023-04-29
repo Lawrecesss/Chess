@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovePlate : MonoBehaviour
 {
@@ -30,27 +31,25 @@ public class MovePlate : MonoBehaviour
     public void OnMouseUp()
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
-        //controller.GetComponent<Game>();
-        //switch (controller.GetComponent<Game>().GetCurrentPlayer())
-        //{
-        //    case "white":
-        //        KReference = controller.GetComponent<Game>().GetPosition(controller.GetComponent<Game>().GetComponent<Chessman>().whiteKx, controller.GetComponent<Game>().GetComponent<Chessman>().whiteKy);
-        //        break;
-        //    case "black":
-        //        KReference = controller.GetComponent<Game>().GetPosition(controller.GetComponent<Game>().GetComponent<Chessman>().whiteKx, controller.GetComponent<Game>().GetComponent<Chessman>().whiteKy);
-        //        break;
-        //}
-        
-        //if (controller.GetComponent<Game>().nextTurn == true)
-        //{
-        //    KReference.GetComponent<Chessman>().checkKing();
-        //    controller.GetComponent<Game>().checkText();
-        //    if (KReference.GetComponent<Chessman>().check == true)
-        //    {
-        //        controller.GetComponent<Game>().Winner("black");
-        //    }
-        //    controller.GetComponent<Game>().nextTurn = false;
-        //}
+        if (controller.GetComponent<Game>().nextTurn == true)
+        {
+            reference.GetComponent<Chessman>().checkKing();
+            if (reference.GetComponent<Chessman>().check == true)
+            {
+                switch (controller.GetComponent<Game>().GetCurrentPlayer())
+                {
+                    case "white":
+                        GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().enabled = true;
+                        GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = "Black king is checked by enemy";
+                        break;
+
+                    case "black":
+                        GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().enabled = true;
+                        GameObject.FindGameObjectWithTag("RestartText").GetComponent<Text>().text = "White king is checked by enemy";
+                        break;
+                }
+            }
+        }
 
         //Destroy the victim Chesspiece
         if (attack)
