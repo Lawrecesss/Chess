@@ -102,7 +102,7 @@ MonoBehaviour:
   movePlate: {fileID: 4427528937630144105, guid: 975cd21375dfdf440977be8479f87330,
     type: 3}
   check: 0
-  blackKx: 4
+  blackKx: 3
   blackKy: 0
   whiteKx: 4
   whiteKy: 7
