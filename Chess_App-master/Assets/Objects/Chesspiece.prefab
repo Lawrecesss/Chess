@@ -102,15 +102,16 @@ MonoBehaviour:
   movePlate: {fileID: 4427528937630144105, guid: 975cd21375dfdf440977be8479f87330,
     type: 3}
   check: 0
+  player: 
   blackKx: 3
   blackKy: 0
   whiteKx: 4
   whiteKy: 7
-  black_queen: {fileID: 21300000, guid: 815d1272350ed474fa30d14ae7ca13b0, type: 3}
-  black_knight: {fileID: 21300000, guid: a1f14d99584a32845bff5722f459abc3, type: 3}
-  black_bishop: {fileID: 21300000, guid: 9b6975579503d444a83355c7dba7e161, type: 3}
-  black_king: {fileID: 21300000, guid: e805a97877d4c8a4ca5ad67ee61f2d37, type: 3}
-  black_rook: {fileID: 21300000, guid: 177d305ed1420934394f941f72171fd2, type: 3}
+  black_queen: {fileID: 21300000, guid: 3f0b2e9ef5f544d69a35e515585e7d6d, type: 3}
+  black_knight: {fileID: 21300000, guid: 97541e87c7aa64307a4b1a8178523c9a, type: 3}
+  black_bishop: {fileID: 21300000, guid: 0c00668b1416d4ac08e7c68b665bacae, type: 3}
+  black_king: {fileID: 21300000, guid: db61925a551624965b8bc233c07fac3d, type: 3}
+  black_rook: {fileID: 21300000, guid: 7e465f696df3a4750b75586d791135f9, type: 3}
   black_pawn: {fileID: 21300000, guid: 75218e5ffb2974ae0a305e00c1ccef11, type: 3}
   white_queen: {fileID: 21300000, guid: 88f1c024a042447ebb34efbcaee22fd3, type: 3}
   white_knight: {fileID: 21300000, guid: 0b708b39df45c4381976e8fd6aa2af94, type: 3}

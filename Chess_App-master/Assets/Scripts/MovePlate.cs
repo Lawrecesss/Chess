@@ -17,6 +17,8 @@ public class MovePlate : MonoBehaviour
     int matrixX;
     int matrixY;
 
+    int input;
+
     //false: movement, true: attacking
     public bool attack = false;
 
@@ -33,7 +35,7 @@ public class MovePlate : MonoBehaviour
     {
         controller = GameObject.FindGameObjectWithTag("GameController");
         removePrint();
-        
+
 
         //Destroy the victim Chesspiece
         if (attack)
@@ -57,12 +59,12 @@ public class MovePlate : MonoBehaviour
 
         //Update the matrix
         controller.GetComponent<Game>().SetPosition(reference);
-        PawnPromotion();
+        PawnPromotion(input);
 
 
         //Switch Current Player
         controller.GetComponent<Game>().NextTurn();
-        
+
 
         //Destroy the move plates including self
         reference.GetComponent<Chessman>().DestroyMovePlates();
@@ -144,7 +146,7 @@ public class MovePlate : MonoBehaviour
             GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().enabled = true;
             GameObject.FindGameObjectWithTag("WinnerText").GetComponent<Text>().text = "Black king is checked";
             printCheckBlack = true;
-            
+
         }
         if (sc.PositionOnBoard(x, y) && sc.GetPosition(x, y) != null && sc.GetPosition(x, y).GetComponent<Chessman>().player != reference.GetComponent<Chessman>().player &&
             sc.GetPosition(x, y).GetComponent<Chessman>().name == "white_king")
@@ -201,17 +203,54 @@ public class MovePlate : MonoBehaviour
         }
 
     }
-    public void PawnPromotion()
+    public void PawnPromotion(int input)
     {
         if (reference.name == "white_pawn" && matrixY == 7)
         {
-            reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().white_bishop;
-            reference.name = "white_bishop";
+            switch (input)
+            {
+                case 0:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().white_queen;
+                    reference.name = "white_queen";
+                    break;
+                case 1:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().white_rook;
+                    reference.name = "white_rook";
+                    break;
+                case 2:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().white_bishop;
+                    reference.name = "white_bishop";
+                    break;
+                case 3:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().white_knight;
+                    reference.name = "white_knight";
+                    break;
+            }
+
+
         }
+            
         if (reference.name == "black_pawn" && matrixY == 0)
         {
-            reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().black_bishop;
-            reference.name = "black_bishop";
+            switch (input)
+            {
+                case 0:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().black_queen;
+                    reference.name = "black_queen";
+                    break;
+                case 1:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().black_rook;
+                    reference.name = "black_rook";
+                    break;
+                case 2:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().black_bishop;
+                    reference.name = "black_bishop";
+                    break;
+                case 3:
+                    reference.GetComponent<SpriteRenderer>().sprite = reference.GetComponent<Chessman>().black_knight;
+                    reference.name = "black_knight";
+                    break;
+            }
         }
 
     }
